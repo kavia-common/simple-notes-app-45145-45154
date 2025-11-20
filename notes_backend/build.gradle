@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'checkstyle'
 	id 'org.springframework.boot' version '3.4.8'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -15,6 +16,20 @@ java {
 
 repositories {
 	mavenCentral()
+}
+
+checkstyle {
+	toolVersion = '10.17.0'
+	configDirectory = file("$rootDir/config/checkstyle")
+	// Do not fail the build on violations to keep CI green for initial scaffolding
+	ignoreFailures = true
+}
+
+tasks.withType(Checkstyle).configureEach {
+	reports {
+		xml.required = false
+		html.required = true
+	}
 }
 
 dependencies {
