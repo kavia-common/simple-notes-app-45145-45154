@@ -1,0 +1,4 @@
+{
+    "command": "./gradlew build",
+    "working_directory": "/home/kavia/workspace/code-generation/simple-notes-app-45145-45154/notes_backend"
+}
